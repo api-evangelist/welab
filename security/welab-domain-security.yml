@@ -1,0 +1,35 @@
+generated: '2026-08-05'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.welab.co
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  1 09:15:26 2026 GMT
+  hsts: false
+- host: portal-sandbox.welab.bank
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 12 01:15:32 2026 GMT
+  hsts: null
+- host: api.welab.bank
+  https: false
+domains:
+- domain: welab.co
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine
+- domain: welab.bank
+  dnssec: true
+  caa:
+  - 0 issue "amazon.com"
+  - 0 issue "amazontrust.com"
+  - 0 iodef "mailto:cybersecurity@welab.bank"
+  - 0 issue "comodoca.com"
+  - 0 issuewild "amazon.com"
+  - 0 issuewild "awstrust.com"
+  spf: true
+  dmarc: true
+  dmarc_policy: reject

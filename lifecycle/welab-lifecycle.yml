@@ -1,0 +1,49 @@
+generated: '2026-08-05'
+method: searched
+source: https://www.welab.bank/en/legal/maintenance-schedule/
+note: >-
+  WeLab Bank publishes no public API changelog, versioning policy, deprecation policy or SLA outside its
+  registered-TSP developer portal. What it does publish for the public is a scheduled-maintenance notice and a
+  set of regulatory/important-notice pages; those are captured here. No StatusPage or Deprecation pointer is
+  wired, because neither a live service-status page nor a deprecation policy was found.
+versioning:
+  scheme: unknown
+  current: null
+  docs: https://portal-sandbox.welab.bank/
+  note: gated — the API catalogue and its versioning live behind the registered-TSP portal
+deprecation:
+  policy_url: null
+  sunset_header: null
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+maintenance:
+  url: https://www.welab.bank/en/legal/maintenance-schedule/
+  status: 200
+  cadence: weekly
+  example: >-
+    "We're going to carry out weekly regular maintenance on 25 Jul 2026 from 00:00 to 04:30 HKT and 26 Jul 2026
+    from 01:00 to 04:30 HKT" — impacting the WeLab Bank App, WeLab Global Wallet, Debit Card (including ATM cash
+    withdrawal and transfers) and Subscribe+.
+  scope: consumer banking services, not the Open API gateway
+notices:
+- name: Important Notices
+  url: https://www.welab.bank/en/legal/important-notices/
+  status: 200
+- name: Regulatory Disclosures
+  url: https://www.welab.bank/en/legal/regulatory-disclosures/
+  status: 200
+- name: Climate Related Disclosures
+  url: https://www.welab.bank/en/legal/climate-related-disclosures/
+  status: 200
+- name: Security Tips
+  url: https://www.welab.bank/en/legal/security-tips/
+  status: 200
+  kind: consumer anti-fraud guidance — not a vulnerability disclosure policy
+support:
+  url: https://www.welab.bank/en/support/
+  email: wecare@welab.bank
+  phone: '+852 3898 6988'
+  hours: 09:00–22:30 HKT daily (loan enquiries 09:00–20:00 HKT Mon–Fri, excluding public holidays)
+deprecated_operations: []

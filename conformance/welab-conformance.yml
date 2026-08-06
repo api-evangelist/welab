@@ -1,0 +1,39 @@
+generated: '2026-08-05'
+method: probed
+source: live probes of welab.bank hosts + the "Open API" link published in the www.welab.bank footer
+note: >-
+  Only standards with observed evidence are asserted. WeLab Bank's API catalogue and specifications sit behind
+  a registered-TSP portal that returns Cloudflare 403 to non-interactive clients, so payload-level standards
+  (error format, pagination, JSON:API, OAuth scopes) could not be assessed and are deliberately omitted rather
+  than guessed.
+standards:
+- id: mutual-tls
+  conforms: true
+  evidence: >-
+    api-sandbox.welab.bank completes a TLS 1.3 handshake with a CertificateRequest and returns HTTP 400
+    "No required SSL certificate was sent" to an anonymous client (probed 2026-08-05).
+- id: hkma-open-api-framework
+  conforms: true
+  evidence: >-
+    WeLab Bank Limited is a Hong Kong Monetary Authority-licensed virtual bank and publishes an "Open API"
+    quick link in the www.welab.bank site footer pointing at its third-party developer portal
+    (https://portal-sandbox.welab.bank/), whose indexed catalogue lists account balance, account status and
+    account transaction APIs — the Phase III account-information shape of the HKMA Open API Framework.
+  note: >-
+    Which HKMA phases (I product info, II subscriptions, III account information, IV transactions) are actually
+    implemented, and against which HKAB Banking Open API Standards version, could not be verified from outside
+    the gated portal.
+- id: dnssec
+  conforms: true
+  evidence: welab.bank publishes DNSKEY records (probed 2026-08-05, see security/welab-domain-security.yml)
+- id: caa
+  conforms: true
+  evidence: >-
+    welab.bank publishes CAA records restricting issuance to Amazon/Comodo CAs and an incident-reporting
+    address (0 iodef "mailto:cybersecurity@welab.bank").
+- id: dmarc
+  conforms: true
+  evidence: welab.bank DMARC policy is p=reject; welab.co is p=quarantine (probed 2026-08-05)
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returned 404 on www.welab.bank and www.welab.co (probed 2026-08-05)

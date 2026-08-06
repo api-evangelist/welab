@@ -1,23 +1,132 @@
 aid: welab
 name: WeLab
-description: 'WeLab is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  WeLab is a Hong Kong-headquartered fintech group founded in 2013 (incorporated November 2012 as WeLend) by
+  Simon Loong, Kelly Wong and Frances Kang, operating consumer lending, digital banking and payments businesses
+  across Hong Kong, mainland China and Indonesia. Its brands include WeLend (Hong Kong online lending),
+  WeLab Digital and Taoxinji (mainland China), WeLab Pay, Tianmian Lab, and two licensed digital banks —
+  WeLab Bank Limited, one of Hong Kong's virtual banks licensed by the Hong Kong Monetary Authority in April 2019
+  and launched to the public in July 2020, and Bank Saqu (formerly Bank Jasa Jakarta) in Indonesia.
+  WeLab Bank is the group's API-bearing entity: under the HKMA Open API Framework it publishes an "Open API"
+  developer portal for registered third-party service providers, backed by dedicated production and sandbox
+  API gateways that require a client certificate (mutual TLS) before any request is served.
+  Investors across its funding rounds include Sequoia Capital, Alibaba Entrepreneurs Fund, Credit Suisse and Allianz.
+image: https://www.welab.bank/uploads/We_Lab_Bank_logo_en_b54140e004.png
 url: https://raw.githubusercontent.com/api-evangelist/welab/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
-specificationVersion: '0.20'
+specificationVersion: '0.21'
 created: '2026-08-05'
 modified: '2026-08-05'
 tags:
-- Company
-apis: []
+- fintech
+- digital-banking
+- virtual-bank
+- open-banking
+- hong-kong
+- indonesia
+- consumer-lending
+- payments
+- hkma-open-api
+- financial-services
+apis:
+- name: WeLab Bank Open API
+  description: >-
+    WeLab Bank's Open API programme, published under the Hong Kong Monetary Authority Open API Framework and
+    linked as "Open API" from the welab.bank site footer. The developer portal at portal-sandbox.welab.bank
+    carries the API catalogue (account information APIs including account balance, account status and account
+    transaction) and a help centre, and requires registration with WeLab Bank as a third-party service provider.
+    The API gateways themselves are dedicated hosts in AWS ap-east-1 (Hong Kong): api.welab.bank for production
+    and api-sandbox.welab.bank for the sandbox. Both enforce mutual TLS — an anonymous request to the sandbox
+    gateway is answered with HTTP 400 "No required SSL certificate was sent" — so no operation, schema or
+    specification is reachable without a WeLab-issued client certificate.
+  humanURL: https://portal-sandbox.welab.bank/
+  baseURL: https://api.welab.bank
+  tags:
+  - open-banking
+  - hkma-open-api
+  - account-information
+  - digital-banking
+  - hong-kong
+  properties:
+  - type: DeveloperPortal
+    url: https://portal-sandbox.welab.bank/
+  - type: Authentication
+    url: authentication/welab-authentication.yml
+  - type: Conformance
+    url: conformance/welab-conformance.yml
+  x-evidence:
+    checked: '2026-08-05'
+    probes:
+    - url: https://api-sandbox.welab.bank/
+      status: 400
+      note: nginx — "No required SSL certificate was sent" (mutual TLS required)
+    - url: https://api.welab.bank/
+      status: 0
+      note: TCP connect timeout from a US network; DNS resolves to prod-opa-gw-public-nlb (AWS ap-east-1)
+    - url: https://portal-sandbox.welab.bank/
+      status: 403
+      note: Cloudflare block page returned to every non-interactive client
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/welab-domain-security.yml
 - type: Website
+  url: https://www.welab.co/
+- type: DeveloperPortal
+  url: https://portal-sandbox.welab.bank/
+- type: Support
+  url: https://www.welab.bank/en/support/
+- type: HelpCenter
+  url: https://www.welab.bank/en/support/faq/
+- type: Blog
+  url: https://www.welab.bank/en/blog/
+- type: Newsroom
+  url: https://www.welab.bank/en/newsroom/
+- type: About
+  url: https://www.welab.bank/en/about/
+- type: TermsOfService
+  url: https://www.welab.bank/en/legal/terms-and-conditions/
+- type: PrivacyPolicy
+  url: https://www.welab.bank/en/legal/privacy-policy/
+- type: RegulatoryDisclosures
+  url: https://www.welab.bank/en/legal/regulatory-disclosures/
+- type: SecurityTips
+  url: https://www.welab.bank/en/legal/security-tips/
+- type: Careers
+  url: https://www.welab.co/en/careers/
+- type: Authentication
+  url: authentication/welab-authentication.yml
+- type: Conformance
+  url: conformance/welab-conformance.yml
+- type: Lifecycle
+  url: lifecycle/welab-lifecycle.yml
+- type: LLMsTxt
+  url: llms/welab-llms.txt
+- type: SecondaryMarketListing
   url: https://www.hiive.com/securities/welab-stock
+x-enrichment:
+  date: '2026-08-05'
+  status: minimal
+  artifacts_added: 5
+  pass: local-v1
+x-coverage:
+  state: gated
+  reason: partner-login
+  detail: >-
+    WeLab Bank's own footer "Open API" link goes to portal-sandbox.welab.bank, a registered-third-party-service-provider
+    portal that answers every non-interactive client with a Cloudflare 403, and its sandbox gateway
+    api-sandbox.welab.bank refuses anonymous requests at the TLS layer with HTTP 400 "No required SSL certificate was
+    sent" — so the account balance/status/transaction contract cannot be read without a WeLab-issued client certificate.
+  evidence:
+  - url: https://api-sandbox.welab.bank/
+    status: 400
+  - url: https://portal-sandbox.welab.bank/
+    status: 403
+  - url: https://www.welab.bank/en/legal/maintenance-schedule/
+    status: 200
+  checked: '2026-08-05'
