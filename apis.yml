@@ -11,6 +11,17 @@ description: >-
   developer portal for registered third-party service providers, backed by dedicated production and sandbox
   API gateways that require a client certificate (mutual TLS) before any request is served.
   Investors across its funding rounds include Sequoia Capital, Alibaba Entrepreneurs Fund, Credit Suisse and Allianz.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://www.welab.bank/uploads/We_Lab_Bank_logo_en_b54140e004.png
 url: https://raw.githubusercontent.com/api-evangelist/welab/refs/heads/main/apis.yml
 x-type: company
