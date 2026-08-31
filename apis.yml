@@ -31,12 +31,12 @@ created: '2026-08-05'
 modified: '2026-08-05'
 tags:
 - Fintech
-- Digital Banking
+- digital-banking
 - virtual-bank
-- Open Banking
-- Hong Kong
-- Indonesia
-- Consumer Lending
+- open-banking
+- hong-kong
+- indonesia
+- consumer-lending
 - Payments
 - hkma-open-api
 - Financial-Services
@@ -65,11 +65,11 @@ apis:
   humanURL: https://portal-sandbox.welab.bank/
   baseURL: https://api.welab.bank
   tags:
-  - Open Banking
+  - open-banking
   - hkma-open-api
-  - Account Information
-  - Digital Banking
-  - Hong Kong
+  - account-information
+  - digital-banking
+  - hong-kong
   tags_raw:
   - open-banking
   - hkma-open-api
