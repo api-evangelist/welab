@@ -52,7 +52,7 @@ tags:
 - Consumer Lending
 - Payments
 - hkma-open-api
-- Financial-Services
+- Financial Services
 tags_raw:
 - fintech
 - digital-banking
@@ -64,6 +64,7 @@ tags_raw:
 - payments
 - hkma-open-api
 - financial-services
+- Financial-Services
 apis:
 - name: WeLab Bank Open API
   description: >-
